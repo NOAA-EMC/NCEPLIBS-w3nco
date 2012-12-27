@@ -14,7 +14,6 @@ call start()
 call summary()
 
 Jim Tuccillo August 1999
-
 ***************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,11 +23,17 @@ Jim Tuccillo August 1999
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/utsname.h>
+#ifdef _AIX
 #include <sys/proc.h>   
+#endif
+#ifdef __linux__
+#include <errno.h>
+#include <sys/resource.h>
+#endif
 
 /* #include "trace_mpif.h" */
 
-FILE *fp;
+static FILE *fp = NULL;
 int numtask, mypid;
 int procid_0;
 int profile, msglen;
@@ -36,9 +41,9 @@ int trace_flag;
 double tcpu, twall, tbytes, f_bytes;
 double tot_wall, final_wall, start_wall;
 double cpu_comm, wall_comm;
-
+#ifdef _AIX
 extern double rtc ();
-
+#endif
 struct time_data {
      double s_cpu;
      double s_wall;
@@ -219,8 +224,19 @@ void elapse (timer)
       return;
 
 */
-
+#ifdef _AIX
       *timer = rtc();
+#endif
+#ifdef __linux__
+  struct timeval st;
+  if (gettimeofday (&st, NULL) == -1) {
+    fprintf (stderr,
+             "elapse: gettimeofday: %s.\n",
+             strerror (errno));
+    *timer = 0.;
+  }
+  *timer = ((double) st.tv_sec) + 1.e-6 * ((double) st.tv_usec);
+#endif
 
 }
 
@@ -292,12 +308,12 @@ void resource ()
 
       double usr, sys;
       long data[14];
-
+#ifdef _AIX
       typedef struct {
           int             tv_sec;         /* seconds */
           int             tv_usec;        /* microseconds */
       } timeval;
-
+#endif
       double user, system;
       int ret;
 
@@ -315,10 +331,11 @@ void resource ()
       system = ((double) RU.ru_stime.tv_sec) + (((double) RU.ru_stime.tv_usec) * ((double) 0.000001));
 
 
-     printf("*****************RESOURCE STATISTICS*******************************\n\n");
+     printf("*****************RESOURCE STATISTICS*******************************\n");
      printf("The total amount of wall time                        = %f\n", tot_wall);
      printf("The total amount of time in user mode                = %f\n", user);
      printf("The total amount of time in sys mode                 = %f\n", system);
+#ifdef _AIX
      printf("The maximum resident set size (KB)                   = %d\n", RU.ru_maxrss);
      printf("Average shared memory use in text segment (KB*sec)   = %d\n", RU.ru_ixrss);
      printf("Average unshared memory use in data segment (KB*sec) = %d\n", RU.ru_idrss);
@@ -333,6 +350,16 @@ void resource ()
      printf("Number of Signals delivered                          = %d\n", RU.ru_nsignals);
      printf("Number of Voluntary Context Switches                 = %d\n", RU.ru_nvcsw);
      printf("Number of InVoluntary Context Switches               = %d\n", RU.ru_nivcsw);
+#endif
+#ifdef __linux__
+     printf ("The maximum resident set size (KB)                   = %ld\n", RU.ru_maxrss);
+     printf ("Number of page faults without I/O activity           = %ld\n", RU.ru_minflt);
+     printf ("Number of page faults with I/O activity              = %ld\n", RU.ru_majflt);
+     printf ("Number of times filesystem performed INPUT           = %ld\n", RU.ru_inblock);
+     printf ("Number of times filesystem performed OUTPUT          = %ld\n", RU.ru_oublock);
+     printf ("Number of Voluntary Context Switches                 = %ld\n", RU.ru_nvcsw);
+     printf ("Number of InVoluntary Context Switches               = %ld\n", RU.ru_nivcsw);
+#endif
      printf("*****************END OF RESOURCE STATISTICS*************************\n\n");
 
 
@@ -418,8 +445,13 @@ void print_timing (string, time)
 
 }
 
+#ifdef _AIX
 void summary( returnVal  )
 int * returnVal;
+#endif
+#ifdef __linux__
+void summary_ (int *returnVal)
+#endif
 {
 
   double temp, temp1;
@@ -435,18 +467,17 @@ int * returnVal;
 
     resource();
 
-   fclose (fp);
-
-
-
-
-
-  
-
+   if (fp) fclose (fp);
 
   return;
 }
+
+#ifdef _AIX
 void start()
+#endif
+#ifdef __linux__
+void start_ ()
+#endif
 {
   int stateid;
   int  Argc;

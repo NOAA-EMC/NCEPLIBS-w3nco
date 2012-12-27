@@ -30,6 +30,7 @@ C 1999-08-24  Gilbert     added call to START() in W3TAGB and a call
 C                         to SUMMARY() in W3TAGE to print out a 
 C                         resource summary list for the program using
 C                         W3TAGs.
+C 2012-10-18  Vuong       REMOVE PRINT STATEMENT 604
 C
 C USAGE:  CALL W3TAGB(PROG, KYR, JD, LF, ORG)
 C         CALL W3TAGE(PROG)
@@ -106,8 +107,8 @@ C
      &   IDAT(7),IDAT(8),JDOY,DAYW(JDOW),JDAY
   603    FORMAT(//,5X,'ENDING DATE-TIME    ',A3,1X,I2.2,',',
      &   I4.4,2X,2(I2.2,':'),I2.2,'.',I3.3,2X,I3,2X,A3,2X,I8)
-         PRINT 604, PROG
-  604    FORMAT(5X,'PROGRAM ',A,' HAS ENDED.  IBM RS/6000 SP')
+C        PRINT 604, PROG
+C 604    FORMAT(5X,'PROGRAM ',A,' HAS ENDED.  IBM RS/6000 SP')
 C 604    FORMAT(5X,'PROGRAM ',A,' HAS ENDED.  CRAY J916/2048')
 C 604    FORMAT(5X,'PROGRAM ',A,' HAS ENDED.  CRAY Y-MP EL2/256')
          PRINT 605
