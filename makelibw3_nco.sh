@@ -29,6 +29,7 @@
 #
 export FC=${1:-ifort}
 export CC=${2:-icc}
+export VER=nco_v2.0.6
 #
 for i in `ls *.f` ; do
   obj=`basename $i .f`
@@ -71,7 +72,7 @@ EOF
 #
 #     Update 4-byte version of libw3nco_4.a
 #
-export LIB="../../libw3nco_4.a"
+export LIB="../../libw3"$VER"_4.a"
 export FFLAGS=" -O3 -g"
 export AFLAGS=" "
 export CFLAGS=" -O3 -DLINUX"
@@ -80,7 +81,7 @@ make -f make.libw3nco
 #
 #     Update 8-byte version of libw3nco_8.a
 #
-export LIB="../../libw3nco_8.a"
+export LIB="../../libw3"$VER"_8.a"
 export FFLAGS=" -O3 -g -r8 -i8"
 export AFLAGS=" "
 export CFLAGS=" -O3 -DLINUX"
@@ -90,7 +91,7 @@ make -f make.libw3nco
 #     Update Double Precision (Size of Real 8-byte and default Integer) version 
 #     of libw3nco_d.a
 #
-export LIB="../../libw3nco_d.a"
+export LIB="../../libw3"$VER"_d.a"
 export FFLAGS=" -O3 -g -r8"
 export AFLAGS=" "
 export CFLAGS=" -O3 -DLINUX"
