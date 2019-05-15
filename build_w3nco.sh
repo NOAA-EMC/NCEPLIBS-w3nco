@@ -31,6 +31,11 @@
    [[ ${3,,} == installonly ]] && { inst=true; skip=true; }
    [[ ${3,,} == localinstallonly ]] && { local=true; inst=true; skip=true; }
  }
+
+ source ./Conf/Collect_info.sh
+ source ./Conf/Gen_cfunction.sh
+ source ./Conf/Reset_version.sh
+
  if [[ ${sys} == "intel_general" ]]; then
    sys6=${sys:6}
    source ./Conf/W3nco_${sys:0:5}_${sys6^}.sh
@@ -44,9 +49,6 @@
    echo "??? W3NCO: module/environment not set."
    exit 1
  }
-
- source ./Conf/Collect_info.sh
- source ./Conf/Gen_cfunction.sh
 
 set -x
  w3ncoLib4=$(basename ${W3NCO_LIB4})
@@ -106,17 +108,18 @@ set -x
               LIB_DIR4=..
               LIB_DIR8=..
               LIB_DIRd=..
+              SRC_DIR=
              } || {
-                   LIB_DIR4=$(dirname ${W3NCO_LIB4})
-                   LIB_DIR8=$(dirname ${W3NCO_LIB8})
-                   LIB_DIRd=$(dirname ${W3NCO_LIBd})
-                  }
-   [ -d $LIB_DIR4 ] || mkdir -p $LIB_DIR4
-   [ -d $LIB_DIR8 ] || mkdir -p $LIB_DIR8
-   [ -d $LIB_DIRd ] || mkdir -p $LIB_DIRd
-   SRC_DIR=$W3NCO_SRC
-   $local && SRC_DIR=
-   [ -d $SRC_DIR ] || mkdir -p $SRC_DIR
+              LIB_DIR4=$(dirname $W3NCO_LIB4)
+              LIB_DIR8=$(dirname $W3NCO_LIB8)
+              LIB_DIRd=$(dirname $W3NCO_LIBd)
+              SRC_DIR=$W3NCO_SRC
+              [ -d $LIB_DIR4 ] || mkdir -p $LIB_DIR4
+              [ -d $LIB_DIR8 ] || mkdir -p $LIB_DIR8
+              [ -d $LIB_DIRd ] || mkdir -p $LIB_DIRd
+              [ -z $SRC_DIR ] || { [ -d $SRC_DIR ] || mkdir -p $SRC_DIR; }
+             }
+
    make clean LIB=
    make install LIB=$w3ncoLib4 LIB_DIR=$LIB_DIR4 SRC_DIR=
    make install LIB=$w3ncoLib8 LIB_DIR=$LIB_DIR8 SRC_DIR=
