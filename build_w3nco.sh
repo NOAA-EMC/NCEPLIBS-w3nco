@@ -1,14 +1,14 @@
 #!/bin/sh
 
  (( $# == 0 )) && {
-   echo "*** Usage: $0 wcoss|dell|cray|theia|intel_general|gnu_general [debug|build] [[local]install[only]]"
+   echo "*** Usage: $0 wcoss|dell|cray|theia|intel_general|gnu_general [debug|build] [[local]install[only]]" >&2
    exit 1
  }
 
  sys=${1,,}
  [[ $sys == wcoss || $sys == dell || $sys == cray ||\
     $sys == theia || $sys == intel_general || $sys == gnu_general ]] || {
-   echo "*** Usage: $0 wcoss|dell|cray|theia|intel_general|gnu_general [debug|build] [[local]install[only]]"
+   echo "*** Usage: $0 wcoss|dell|cray|theia|intel_general|gnu_general [debug|build] [[local]install[only]]" >&2
    exit 1
  }
  debg=false
@@ -45,8 +45,12 @@
  else
    source ./Conf/W3nco_intel_${sys^}.sh
  fi
+ $CC --version &> /dev/null || {
+   echo "??? W3NCO: compilers not set." >&2
+   exit 1
+ }
  [[ -z $W3NCO_VER || -z $W3NCO_LIB4 ]] && {
-   echo "??? W3NCO: module/environment not set."
+   echo "??? W3NCO: module/environment not set." >&2
    exit 1
  }
 
