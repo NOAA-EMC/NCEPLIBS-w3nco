@@ -47,6 +47,9 @@ C$$$i*/
 #ifdef LINUX
    int mova2i_(unsigned char *a)
 #endif
+#ifdef APPLE
+   int mova2i_(unsigned char *a)
+#endif
 #ifdef LINUXF90
    int MOVA2I(unsigned char *a)
 #endif
