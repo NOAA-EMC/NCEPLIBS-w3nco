@@ -449,7 +449,7 @@ void print_timing (string, time)
 void summary( returnVal  )
 int * returnVal;
 #endif
-#ifdef __linux__
+#if defined(LINUX) || (APPLE)
 void summary_ (int *returnVal)
 #endif
 {
@@ -475,7 +475,7 @@ void summary_ (int *returnVal)
 #ifdef _AIX
 void start()
 #endif
-#ifdef __linux__
+#if defined(LINUX) || defined(APPLE)
 void start_ ()
 #endif
 {
