@@ -1,11 +1,13 @@
 # W3NCO
 
-Does something, presumably!
+Several utilities
+
+Code manager: Boi Vuong
 
 
 ### Prerequisites
 
-Compilers: GNU | Intel | Clang | AppleClang | PGI
+Compilers: GNU | Intel | Clang | AppleClang 
 
 
 ### Installing
@@ -21,7 +23,7 @@ make install
 
 ### Version
 
-2.0.6
+2.1.0
 
 
 ### Authors
