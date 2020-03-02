@@ -1,6 +1,6 @@
 # W3NCO
 
-Several utilities
+Several utilities from NCO to indicate the types of variables and processor.
 
 Code manager: Boi Vuong
 
