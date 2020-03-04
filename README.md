@@ -1,11 +1,13 @@
 # W3NCO
 
-Does something, presumably!
+Several utilities from NCO to indicate the types of variables and processor.
+
+Code manager: Boi Vuong
 
 
 ### Prerequisites
 
-Compilers: GNU | Intel | Clang | AppleClang | PGI
+Compilers: GNU | Intel | Clang | AppleClang 
 
 
 ### Installing
@@ -21,9 +23,9 @@ make install
 
 ### Version
 
-2.0.6
+2.1.0
 
 
 ### Authors
 
-* **[NCEP/EMC](NCEP.List.EMC.nceplibs.Developers@noaa.gov)**
+* **[NCEP/EMC](mailto:NCEP.List.EMC.nceplibs.Developers@noaa.gov)**
