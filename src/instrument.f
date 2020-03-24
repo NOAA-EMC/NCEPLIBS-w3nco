@@ -122,7 +122,7 @@
             TMIN=0
             TMAX=0
           ENDIF
-       END IF
+       ENDIF
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 !  KEEP CURRENT TIME FOR NEXT INVOCATION
         IF(K.GE.0) CALL W3UTCDAT(IDAT)
