@@ -449,7 +449,7 @@ void print_timing (string, time)
 void summary( returnVal  )
 int * returnVal;
 #endif
-#if defined(LINUX) || (APPLE)
+#if defined(LINUX) || defined(APPLE)
 void summary_ (int *returnVal)
 #endif
 {
