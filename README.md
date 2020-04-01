@@ -16,14 +16,14 @@ Compilers: GNU | Intel | Clang | AppleClang
 mkdir build
 cd build
 cmake ..  -DCMAKE_INSTALL_PREFIX=/path/to/install /path/to/NCEPLIBS-w3nco
-make -j2
+make 
 make install
 ```
 
 
 ### Version
 
-2.4.0
+2.2.0
 
 
 ### Authors

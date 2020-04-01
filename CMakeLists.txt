@@ -53,32 +53,22 @@ set(kinds "4" "8" "d")
 foreach(kind ${kinds})
   set(lib_name ${PROJECT_NAME}_${kind})
   set(versioned_lib_name ${PROJECT_NAME}_v${PROJECT_VERSION}_${kind})
-  set(module_dir ${CMAKE_CURRENT_BINARY_DIR}/include_${kind})
 
   add_library(${lib_name}_f OBJECT ${fortran_src})
   set_target_properties(${lib_name}_f PROPERTIES COMPILE_FLAGS
                                                  "${fortran_${kind}_flags}")
-  set_target_properties(${lib_name}_f PROPERTIES Fortran_MODULE_DIRECTORY
-                                                 ${module_dir})
-
   add_library(${lib_name}_c OBJECT ${c_src})
 
   add_library(${lib_name} STATIC $<TARGET_OBJECTS:${lib_name}_f>
                                  $<TARGET_OBJECTS:${lib_name}_c>)
   set_target_properties(${lib_name} PROPERTIES OUTPUT_NAME
                                                ${versioned_lib_name})
-  target_include_directories(
-    ${lib_name}
-    PUBLIC $<BUILD_INTERFACE:${module_dir}>
-           $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include_${kind}>)
-
   install(
     TARGETS ${lib_name}
     EXPORT ${PROJECT_NAME}-config
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib)
-  install(DIRECTORY ${module_dir} DESTINATION ${CMAKE_INSTALL_PREFIX})
 endforeach()
 
 install(EXPORT ${PROJECT_NAME}-config
