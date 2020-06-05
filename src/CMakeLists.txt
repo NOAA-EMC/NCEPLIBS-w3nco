@@ -24,8 +24,6 @@ elseif(CMAKE_C_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
 endif()
 
 set_source_files_properties(${c_src} PROPERTIES COMPILE_OPTIONS "${c_flags}")
-set_source_files_properties(${c_src} PROPERTIES COMPILE_DEFINITIONS
-  "${platform_definitions}")
 
 # One target for real32 and one target for real64
 set(kinds "4" "8" "d")
