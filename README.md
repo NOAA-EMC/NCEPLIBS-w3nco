@@ -24,6 +24,8 @@ cd build
 module load intel/18.0.1.163
 module load impi/18.0.1
 module load cmake/3.16.2
+module use -a /usrx/local/nceplibs/dev/NCEPLIBS/modulefiles
+module load w3nco/2.2.0
 
 If the chosen compiler is not the default compiler on the system,
 set the environment variables: export CC=..., export CXX=..., 
