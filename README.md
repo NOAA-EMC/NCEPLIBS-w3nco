@@ -27,15 +27,16 @@ module load cmake/3.16.2
 module use -a /usrx/local/nceplibs/dev/NCEPLIBS/modulefiles
 module load w3nco/2.2.0
 
+export CC=icc
+export CXX=icpc
+export FC=ifort
+
 If the chosen compiler is not the default compiler on the system,
 set the environment variables: export CC=..., export CXX=..., 
 export FC=..., before invoking cmake.
 
 Note: Windows systems is not supported at this time.
 
-export CC=icc
-export CXX=icpc
-export FC=ifort
 ```
 #### Run cmake
 ```
