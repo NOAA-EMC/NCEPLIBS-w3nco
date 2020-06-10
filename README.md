@@ -39,11 +39,12 @@ export FC=ifort
 ```
 cmake .. -DCMAKE_INSTALL_PREFIX=path_to_install (where you want to install W3NCO)
 
+If -DCMAKE_INSTALL_PREFIX= is omitted, the libraries will be installed in directory 
+install underneath the build directory.
+
 make
 make install
 
-If -DCMAKE_INSTALL_PREFIX= is omitted, the libraries will be installed in directory 
-install underneath the build directory.
 ```
 ### Version
 
