@@ -11,7 +11,7 @@ Compilers: GNU | Intel | Clang | AppleClang
 #### Installing
 ```
 Download W3NCO Code from GitHub.com
-git clone -b w3nco_v2.2.0 https://github.com/NOAA-EMC/NCEPLIBS-w3nco.git
+git clone -b w3nco_v2.2.0 --recursive https://github.com/NOAA-EMC/NCEPLIBS-w3nco.git
 cd NCEPLIBS-w3nco
 ```
 #### Create a directory where to build W3NCO library
