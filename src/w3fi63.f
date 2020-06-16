@@ -148,6 +148,8 @@ C                         CHANGED GRID 194 TO 3KM MERCATOR GRID OVER PUERTO RICO
 C                         CORRECTED LATITUDE OF SW CORNER POINT OF GRID 151
 C 2011-10-12  VUONG       ADDED GRID 129, 187, 188, 189 AND 193
 C 2012-04-16  VUONG       ADDED NEW GRID 132, 200
+C 2017-07-17  VUONG       CORRECT GRID 161 NUMBER OF POINT Nj from 102 to 103
+C                         AND MAP SIZE FROM 13974 TO 14111
 C
 C USAGE:    CALL W3FI63(MSGA,KPDS,KGDS,KBMS,DATA,KPTR,KRET)
 C   INPUT ARGUMENT LIST:
@@ -2408,8 +2410,8 @@ C                 ----- U.S. GRID 160 - MAP SIZE 28080
                   J     = 28080
                   GO TO 800
               ELSE IF (KPDS(3).EQ.161) THEN
-C                 ----- U.S. GRID 161 - MAP SIZE 13974
-                  J     = 13974
+C                 ----- U.S. GRID 161 - MAP SIZE 14111
+                  J     = 14111
                   GO TO 800
               ELSE IF (KPDS(3).EQ.163) THEN
 C                 ----- U.S. GRID 163 - MAP SIZE 727776
