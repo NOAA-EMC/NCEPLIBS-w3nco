@@ -1,0 +1,9 @@
+build/
+install/
+
+*.[ao]
+*.mod
+*.so
+
+*.swp
+.DS_Store
