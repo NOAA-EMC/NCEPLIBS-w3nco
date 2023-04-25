@@ -12,6 +12,8 @@ have to change as a result of this code move.
 This is part of
 the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
 
+To submit bug reports, feature requests, or other code-related issues including installation and usage questions, please create a [GitHub issue](https://github.com/NOAA-EMC/NCEPLIBS-w3nco/issues). For general NCEPLIBS inquiries, contact [Edward Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact [Alex Richert](mailto:alexander.richert@noaa.gov)).
+
 ## Authors
 
 NCEP/EMC developers.
