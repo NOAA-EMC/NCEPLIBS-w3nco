@@ -26,9 +26,10 @@ Jim Tuccillo August 1999
 #ifdef _AIX
 #include <sys/proc.h>   
 #endif
-#ifdef __linux__
+#if defined(__linux__) || defined(__CYGWIN__)
 #include <errno.h>
 #include <sys/resource.h>
+#include <sys/times.h>
 #endif
 
 /* #include "trace_mpif.h" */
