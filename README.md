@@ -1,16 +1,16 @@
-![Status](https://github.com/NOAA-EMC/NCEPLIBS-sp/workflows/Build%20and%20Test/badge.svg)
-
 # W3NCO
 
 This library contains Fortran 90 decoder/encoder routines for GRIB
-edition 1. This library is deprecated and will not be in the next
-release of NCEPLIBS. All code will be migrated to the
+edition 1. **This library is deprecated and will not be in the next
+release of NCEPLIBS**. All code will be migrated to the
 [NCEPLIBS-w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc) library
-will full backward compatibility maintained. Only build systems will
+with full backward compatibility maintained. Only build systems will
 have to change as a result of this code move.
 
 This is part of
 the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
+
+To submit bug reports, feature requests, or other code-related issues including installation and usage questions, please create a [GitHub issue](https://github.com/NOAA-EMC/NCEPLIBS-w3nco/issues). For general NCEPLIBS inquiries, contact [Edward Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact [Alex Richert](mailto:alexander.richert@noaa.gov)).
 
 ## Authors
 
